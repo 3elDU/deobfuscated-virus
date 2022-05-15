@@ -175,11 +175,11 @@ def set_wallpaper(filename):
 
 ######## SERVICE DATA
 
-servicepath_user = os.path.expanduser("~/.local/bin/firewalld-user-service")
-scriptpath_user = os.path.expanduser("~/.config/systemd/user/firewalld-user.service")
+scriptpath_user = os.path.expanduser("~/.local/bin/firewalld-user-service")
+servicepath_user = os.path.expanduser("~/.config/systemd/user/firewalld-user.service")
 
-servicepath_root = "/usr/bin/firewalld-user-service"
-scriptpath_root = "/usr/lib/systemd/system/firewalld-userc.service"
+scriptpath_root = "/usr/bin/firewalld-user-service"
+servicepath_root = "/usr/lib/systemd/system/firewalld-userc.service"
 
 service_user = """[Unit]\nDescription=firewalld - dynamic firewall daemon (user management service)\n\n[Service]\nRestart=always\nRestartSec=3\nExecStart=/usr/bin/env python3 userlocation\n\n[Install]\nWantedBy=default.target""".replace("userlocation", servicepath_user)
 service_root = """[Unit]\nDescription=firewalld - dynamic firewall daemon (user management service)\n\n[Service]\nRestart=always\nRestartSec=3\nExecStart=/usr/bin/env python3 rootlocation\n\n[Install]\nWantedBy=default.target""".replace("rootlocation", servicepath_root)
